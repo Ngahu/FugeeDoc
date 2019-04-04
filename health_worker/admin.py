@@ -1,3 +1,25 @@
 from django.contrib import admin
+from .models import HealthOfficer
 
-# Register your models here.
+
+
+class HealthOfficerAdmin(admin.ModelAdmin):
+    list_display = [
+        'user',
+        'timestamp'
+    ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+admin.site.register(HealthOfficer,HealthOfficerAdmin)
