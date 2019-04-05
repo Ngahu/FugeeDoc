@@ -34,7 +34,7 @@ class RefugeeCreateAPIView(APIView):
     Description:Create a refugee
 
     '''
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     def post(self,request,*args, **kwargs):
         first_name = request.data["first_name"]
         last_name =  request.data["last_name"]
