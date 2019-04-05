@@ -57,7 +57,7 @@
                             <th scope="col" class="text-dark text-semibold">Phone Number</th>
                             <th scope="col" class="text-dark text-semibold">First Name</th>
                             <th scope="col" class="text-dark text-semibold">Last Name</th>
-                            <th scope="col" class="text-dark text-semibold">Phone number</th>
+                            <th scope="col" class="text-dark text-semibold">Member Since</th>
                             {% comment %} <th scope="col" class="text-dark text-semibold">Actions</th> {% endcomment %}
                             
                             </tr>
@@ -70,13 +70,13 @@
                             <td>
                                                     
                                                     <a href='#'>
-                                                    {{worker.user.phone_number}}
+                                                    {{worker.phone_number}}
                                                     </a>
                                                     </td>
                                                     
-                                                    <td>{{ user.first_name}}</td>
-                                                    <td>{{ user.last_name }} </td>
-                                                    <td>{{ user.refugee_id }} </td>
+                                                    <td>{{ worker.first_name}}</td>
+                                                    <td>{{ worker.last_name }} </td>
+                                                    <td>{{  worker.timestamp }} </td>
                                                     
                                                     
                             

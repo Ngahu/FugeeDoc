@@ -10,7 +10,7 @@ from django.utils.decorators import method_decorator
 from refugee.models import Refugee
 
 
-from health_worker.models import HealthOfficer
+from accounts.models import User
 
 
 # @method_decorator([login_required,],name='dispatch')
@@ -55,7 +55,7 @@ class AllHealthWorkersView(View):
     '''
     template_name = 'owner/dashboard/all_workers.html'
     def get(self,request,*args,**kwargs):
-        all_officers = HealthOfficer.objects.all()
+        all_officers = User.objects.filter(health_worker=True)
         context = {
             "all_officers":all_officers
         }

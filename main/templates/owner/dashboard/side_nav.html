@@ -11,7 +11,21 @@
               <li class="side-nav-header">
                 <span>Navigation</span>
               </li>
-              <li class="nav-item dropdown open">
+
+              <li class="nav-item dropdown">
+                <a class="dropdown-toggle" href="{% url 'main:worker_dashboard_view' %}">
+                    <span class="icon-holder">
+                      <i class="lni-cloud"></i>
+                    </span>
+                    <span class="title">Stats</span>
+                    <span class="arrow">
+                      <i class="lni-chevron-right"></i>
+                    </span>
+                  </a>
+               
+              </li>
+
+              <li class="nav-item dropdown">
                 <a href="#" class="dropdown-toggle">
                   <span class="icon-holder">
                     <i class="lni-dashboard"></i>
@@ -23,25 +37,31 @@
                 </a>
                 <ul class="dropdown-menu sub-down">
                   <li class="active">
+                    <a href=" {% url 'main:officers_health' %}">Health Officers</a>
+                  </li>
+                  
+                </ul>
+                <ul class="dropdown-menu sub-down">
+                  <li class="active">
                     <a href=" {% url 'main:all_refugees' %}">Refugees</a>
                   </li>
-                  <li>
-                    <a href=#"#">Health Workers</a>
-                  </li>
+                  
                 </ul>
               </li>
+
               <li class="nav-item dropdown">
                 <a class="dropdown-toggle" href="#">
                     <span class="icon-holder">
                       <i class="lni-cloud"></i>
                     </span>
-                    <span class="title">Apps</span>
+                    <span class="title">Communications</span>
                     <span class="arrow">
                       <i class="lni-chevron-right"></i>
                     </span>
                   </a>
                
               </li>
+              
               
             
               

@@ -128,7 +128,7 @@ class HealthOfficerSendCodeAPIView(APIView):
                 #send the code to the user here
                 the_recipient.append(str(the_health_officer.phone_number))
 
-                message = "FugeeDoc, your code is {}".format(the_code)
+                message = "DocFugee, your code is {}".format(the_code)
 
                 res = sms.send(message=message,recipients=the_recipient)
 
@@ -297,7 +297,7 @@ class HealthOfficerRegisterAPIView(APIView):
                 #send the code to the user
                 the_recipient.append(str(user.phone_number))
 
-                message = "FugeeDoc, your code is {}".format(the_code)
+                message = "DocFugee, your code is {}".format(the_code)
 
                 res = sms.send(message=message,recipients=the_recipient)
 
