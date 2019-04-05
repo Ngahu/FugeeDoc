@@ -30,3 +30,21 @@ def unique_refugee_id_generator(instance,size=4):
         return custom_string_generator(size=size)
     
     return new_refugee_id
+
+
+
+
+
+
+def unique_entry_id_generator(instance,size=7):
+    """
+    Description:Generate a unique entry id for every  created.\n
+    """
+    new_refugee_id = custom_string_generator(size=size)
+    #Get the class from the instance
+    Klass = instance.__class__
+    qs_exists = Klass.objects.filter(entry_id=new_refugee_id).exists()
+    if qs_exists:
+        return custom_string_generator(size=size)
+    
+    return new_refugee_id

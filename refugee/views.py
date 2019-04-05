@@ -9,12 +9,19 @@ from rest_framework.response import Response
 # Create your views here.
 from .models import Refugee
 
-from .serializers import RefugeeRegisterSerializer,RefugeeListSerializer
+from .serializers import(
+    RefugeeRegisterSerializer,
+    RefugeeListSerializer,
+    CreatePatientSymptomSerializer
+)
 
 from rest_framework.permissions import (IsAdminUser, IsAuthenticated,
                                         IsAuthenticatedOrReadOnly)
 
 from health_worker.models import HealthOfficer
+
+
+
 
 class RefugeeCreateAPIView(APIView):
     '''
@@ -75,3 +82,8 @@ class RefugeeListAPIView(APIView):
         
         refugees_serializer = RefugeeListSerializer(refugees_list,many=True)
         return Response(refugees_serializer.data,status=status.HTTP_200_OK)
+
+
+
+
+
