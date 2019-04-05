@@ -49,7 +49,7 @@ class UserManager(BaseUserManager):
         user_obj.admin=is_admin
         user_obj.active=is_active
 
-        user_obj.owner=is_health_worker
+        user_obj.health_worker=is_health_worker
 
         user_obj.save(using=self._db)
         return user_obj
@@ -93,7 +93,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-    phone_number = PhoneNumberField(db_index=True,verbose_name='phone number',unique=True)
+    phone_number = models.CharField(db_index=True,max_length=100,verbose_name='phone number',unique=True)
     # Each `User` needs a human-readable unique identifier that we can use to
     # represent the `User` in the UI. We want to index this column in the
     # database to improve lookup performance.
@@ -116,7 +116,7 @@ class User(AbstractBaseUser):
 
 
     def __str__(self):
-        return self.phone_number
+        return str(self.phone_number)
     
 
 

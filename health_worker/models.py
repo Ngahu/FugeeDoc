@@ -21,7 +21,7 @@ class HealthOfficer(models.Model):
         verbose_name_plural = _("Health Officers")
 
     def __str__(self):
-        return self.user.phone_number
+        return str(self.user.phone_number)
 
     def get_absolute_url(self):
         pass
