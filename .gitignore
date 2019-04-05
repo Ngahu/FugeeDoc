@@ -3,6 +3,8 @@
 *pyc
 /.vscode
 
-/static_cdn
+/staticfiles
+
+/mediafiles
 
 .DS_Store
