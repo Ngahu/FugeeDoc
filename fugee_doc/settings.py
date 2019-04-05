@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'accounts',
     'health_worker',
     'refugee',
+    'main',
 
 
     #External apps

@@ -12,6 +12,7 @@ class Refugee(models.Model):
     '''
     Description:Represent a refugee user.\n #TODO ADD A CREATOR FIELD HERE
     '''
+    phone_number = models.CharField(db_index=True,max_length=100,verbose_name='phone number')
     first_name = models.CharField(max_length=100)
     last_name =  models.CharField(max_length=100)
     refugee_id = models.CharField(max_length=100,unique=True,blank=True, null=True)
@@ -118,7 +119,7 @@ class Entry(models.Model):
     Description:This is going to represent an entry.An entry is a representation of
     interaction in between a CHw and a patient
     '''
-    creator =  models.ForeignKey(User, on_delete=models.PROTECT)
+    creator =  models.ForeignKey(User, on_delete=models.PROTECT,blank=True, null=True)
     entry_id = models.CharField(max_length=20,blank=True,unique=True)
     refugee = models.ForeignKey(Refugee, on_delete=models.PROTECT)
     symptoms = models.ForeignKey(PatientSymptom, on_delete=models.PROTECT)

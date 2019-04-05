@@ -17,7 +17,8 @@ class RefugeeRegisterSerializer(serializers.ModelSerializer):
         model = Refugee
         fields = (
             'first_name',
-            'last_name'
+            'last_name',
+            'phone_number',
 
         )
         
@@ -25,6 +26,7 @@ class RefugeeRegisterSerializer(serializers.ModelSerializer):
             new_refugee = Refugee(
                 first_name = validated_data['first_name'],
                 last_name = validated_data['last_name'],
+                phone_number = validated_data['phone_number']
             )
             new_refugee.save()
 
@@ -45,7 +47,8 @@ class RefugeeListSerializer(serializers.ModelSerializer):
         model = Refugee
         fields = [
             'first_name',
-            'last_name'
+            'last_name',
+            'phone_number'
         ]
 
 
@@ -125,7 +128,7 @@ class LocationAddSerializer(serializers.ModelSerializer):
 
 
 
-class EntryCreateSerializer(serializers.ModelSerializers):
+class EntryCreateSerializer(serializers.ModelSerializer):
     '''
     Description:Create a patient entry.\n
     '''
@@ -148,4 +151,4 @@ class EntryCreateSerializer(serializers.ModelSerializers):
             new_entry.save()
 
             return new_entry
-            
+

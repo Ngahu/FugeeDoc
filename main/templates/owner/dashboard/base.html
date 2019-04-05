@@ -1,0 +1,52 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>KuyuTech- Mining Company Admin Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    
+    <link rel="stylesheet" type="text/css" href="{% static "owner/dashboard/css/bootstrap.min.css" %}">
+    <!-- Fonts -->
+    <link rel="stylesheet" type="text/css" href="{% static "owner/dashboard/fonts/line-icons.css" %}">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="{% static "owner/dashboard/css/main.css" %}">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" type="text/css" href="{% static "owner/dashboard/css/responsive.css" %}">
+
+  </head>
+
+
+  <body>
+  <div class="app header-default side-nav-dark">
+      <div class="layout">
+      
+
+      {% block content %}
+
+
+      {% endblock content %}
+
+
+      </div>
+      </div>
+
+      <!-- Preloader -->
+    <div id="preloader">
+      <div class="loader" id="loader-1"></div>
+    </div>
+    <!-- End Preloader -->
+
+
+
+
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="{% static "owner/dashboard/js/jquery-min.js" %}"></script>
+        <script src="{% static "owner/dashboard/js/popper.min.js" %}"></script>
+        <script src="{% static "owner/dashboard/js/bootstrap.min.js" %}"></script>
+        <script src="{% static "owner/dashboard/js/jquery.app.js" %}"></script>
+        <script src="{% static "owner/dashboard/js/main.js" %}"></script>
+  </body>
+  </html>

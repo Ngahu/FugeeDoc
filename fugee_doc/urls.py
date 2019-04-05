@@ -14,6 +14,7 @@ urlpatterns = [
 
     url(r'^health-worker/', include('health_worker.urls',namespace='health_worker')),
     url(r'^refugee/', include('refugee.urls',namespace='refugee')),
+    url(r'^dashboard/', include('main.urls',namespace='main')),
 
 
 ]+ static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)

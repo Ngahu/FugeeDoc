@@ -17,11 +17,13 @@ from .models import HealthOfficer
 
 import africastalking
 
-username = 'sandbox'
-api_key = 'b6c5a9e559375d60c8b6af8840c4eae2af77a74508e9251971dfca0e372b7578'
+# username = 'sandbox'
+# api_key = 'b6c5a9e559375d60c8b6af8840c4eae2af77a74508e9251971dfca0e372b7578'
 
-# username = 'e_limu'
-# api_key = '2647af47e57eaa6130472ff3fdd0b31a8196a76ae2a181aba7daf00a5ca9c398'
+
+
+username = 'e_limu'
+api_key = '2647af47e57eaa6130472ff3fdd0b31a8196a76ae2a181aba7daf00a5ca9c398'
 africastalking.initialize(username,api_key)
 
 # Initialize a service e.g. SMS

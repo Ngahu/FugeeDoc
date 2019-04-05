@@ -1,0 +1,110 @@
+{% extends 'owner/dashboard/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+{% include "owner/dashboard/header.html" %}
+
+{% include "owner/dashboard/side_nav.html" %}
+
+
+
+<!-- Page Container START -->
+        <div class="page-container">
+
+          <!-- Content Wrapper START -->
+           <div class="main-content">
+              
+              <!-- bread crumbs-->
+              <div class="container-fluid">
+              <!-- Breadcrumb Start -->
+              <div class="breadcrumb-wrapper row">
+                <div class="col-12 col-lg-3 col-md-6">
+                  <h4 class="page-title">Refugees</h4>
+                </div>
+                <div class="col-12 col-lg-9 col-md-6">
+                  <ol class="breadcrumb float-right">
+                    <li><a href="#">Home</a></li>
+                    <li class="active">/ Refugees List</li>
+                  </ol>
+                </div>
+              </div>
+              <!-- Breadcrumb End -->
+            </div>
+              <!-- bread crumbs-->
+
+
+            <div class="container-fluid">
+              <!-- Title Count Start -->
+              {% comment %} {% include "owner/dashboard/title_count.html" %} {% endcomment %}
+              <!-- Title Count End -->
+              
+             
+
+
+              <div class="row">
+                    <div class="col-12 col-xl-12 m-b-12">
+                            <div class="card">
+                            
+                            <div class="card-body">
+                            
+                            <div class="table-responsive">
+                            <table class="table mb-0">
+                            <thead>
+                            <tr>
+                                
+                            <th scope="col" class="text-dark text-semibold">Phone Number</th>
+                            <th scope="col" class="text-dark text-semibold">First Name</th>
+                            <th scope="col" class="text-dark text-semibold">Last Name</th>
+                            <th scope="col" class="text-dark text-semibold">Id</th>
+                            {% comment %} <th scope="col" class="text-dark text-semibold">Actions</th> {% endcomment %}
+                            
+                            </tr>
+                            </thead>
+
+                            {% for  user  in all_refugees  %}
+                            <tbody>
+                            <tr>
+
+                            <td>
+                                                    
+                                                    <a href='#'>
+                                                    {{user.phone_number}}
+                                                    </a>
+                                                    </td>
+                                                    
+                                                    <td>{{ user.first_name}}</td>
+                                                    <td>{{ user.last_name }} </td>
+                                                    <td>{{ user.refugee_id }} </td>
+                                                    
+                                                    
+                            
+                            
+                            </tr>
+                            
+                            
+                            </tbody>
+                            {% endfor %}
+                            </table>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+              </div>
+              
+            </div>
+          </div>
+          <!-- Content Wrapper END -->
+
+          <!-- Footer START -->
+          {% include "owner/dashboard/footer.html" %}
+          <!-- Footer END -->
+
+        </div>
+        <!-- Page Container END -->
+
+
+
+{% endblock content %}
+
