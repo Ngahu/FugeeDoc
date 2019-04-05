@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     #internal apps
     'accounts',
     'health_worker',
+    'refugee',
 
 
     #External apps

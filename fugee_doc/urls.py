@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^api-token-auth/', views.obtain_auth_token),
 
     url(r'^health-worker/', include('health_worker.urls',namespace='health_worker')),
+    url(r'^refugee/', include('refugee.urls',namespace='refugee')),
 ]
 
 

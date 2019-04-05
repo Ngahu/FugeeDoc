@@ -10,13 +10,15 @@ from accounts.models import User
 
 from accounts.serializers import UserSerializer
 
+from .serializers import HealthOfficerRegisterSerializer
+
 from .models import HealthOfficer
 
 
 import africastalking
 
 username = 'sandbox'
-api_key = '225578ada51f5897b086a45ea32e65484e55c5c437d6e5b155ae7eeef634bfcf'
+api_key = 'b6c5a9e559375d60c8b6af8840c4eae2af77a74508e9251971dfca0e372b7578'
 
 # username = 'e_limu'
 # api_key = '2647af47e57eaa6130472ff3fdd0b31a8196a76ae2a181aba7daf00a5ca9c398'
@@ -155,7 +157,7 @@ class HealthOfficerConfirmCodeAPIView(APIView):
     Request data type:JSON\n
     POST request body: \n
         {
-            "email":"+254725743069",
+            "phone_number":"+254725743069",
             "code":"1234"
         }\n
     Response success status:HTTP_201_created \n
@@ -235,6 +237,79 @@ class HealthOfficerConfirmCodeAPIView(APIView):
 
 
 
+class HealthOfficerRegisterAPIView(APIView):
+    """
+    Description:Authenticate the health officer.\n
+    """
+    def post(self,request,*args, **kwargs):
+        first_name = request.data["first_name"]
+        last_name =  request.data["last_name"]
+        phone_number = request.data["phone_number"]
+
+
+        #first make sure no user with that phone number exists
+        if User.objects.filter(phone_number__iexact=phone_number).exists():
+            error = {
+                "error":"Sorry,{} is already registered.".format(phone_number)
+            }
+            return Response(error,status=status.HTTP_409_CONFLICT)
+        
+
+        int_numbers = random.sample(range(10), 4)
+
+        the_code = ''.join(map(str, int_numbers))
+
+        the_recipient = []
+
+
+        
+        data = {
+            "phone_number":phone_number,
+            "first_name":first_name,
+            "last_name":last_name,
+            "password":the_code,
+            
+        }
+        
+
+        #create the user first
+        usercreate_serializer = UserSerializer(data=data)
+
+        if usercreate_serializer.is_valid():
+            user = usercreate_serializer.save()
+            user.set_password(the_code)
+            user.save()
+
+
+            #create the health officer
+            data = {
+                "user":user.id
+            }
+
+            health_officcer_serializer = HealthOfficerRegisterSerializer(data=data)
+
+            if health_officcer_serializer.is_valid():
+                new_officer = health_officcer_serializer.save()
+
+
+                #send the code to the user
+                the_recipient.append(str(user.phone_number))
+
+                message = "FugeeDoc, your code is {}".format(the_code)
+
+                res = sms.send(message=message,recipients=the_recipient)
+
+                print(res)
+
+                success_response = {
+                    "success":"Code sent to {}".format(user.phone_number)
+                }
+                return Response(success_response,status=status.HTTP_202_ACCEPTED)
+
+            return Response(health_officcer_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+        
+        return Response(usercreate_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
 
 
 
@@ -268,9 +343,7 @@ class ATCallBackAPIView(APIView):
         print("The users data",the_text)
 
         if the_text == "":
-            response  = "CON What would you want to check \n`
-            response  = "1. My Account \n"
-            response  = "2. My phone number"
+            response  = "CON What would you want to check"
         
         else:
             print("Not empty")
